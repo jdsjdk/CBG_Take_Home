@@ -1,2 +1,2 @@
 # Get rid of the "DS_Store" Mac file
-* .DS_Store
+*.DS_Store
