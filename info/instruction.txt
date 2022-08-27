@@ -1,5 +1,4 @@
-instructions: 
-
+Instructions: 
 
 There is a duplicate contest in the contests.csv file, see if you can spot it and remove it and clean up the associated records in the other files. 
 All records in the choices file that include the illegal duplicate contest ID should be removed.  
