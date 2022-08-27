@@ -1,8 +1,11 @@
 Instructions: 
 
-There is a duplicate contest in the contests.csv file, see if you can spot it and remove it and clean up the associated records in the other files. 
+There is a duplicate contest in the contests.csv file, see if you can spot it and remove it,
+ and clean up the associated records in the other files. 
 All records in the choices file that include the illegal duplicate contest ID should be removed.  
-All records in the ballotmapper file  that include the illegal duplicate contest ID should be modified to reference the legal contest ID and legal choice ID. 
-Candidate records that appear similar to existing records can be considered duplicates and should be removed. When this task is complete the number of records in the ballotmapper file should be unchanged.. 
+All records in the ballotmapper file  that include the illegal duplicate contest ID should be.. 
+..modified to reference the legal contest ID and legal choice ID. 
+Candidate records that appear similar to existing records can be considered duplicates and should be removed. 
+When this task is complete the number of records in the ballotmapper file should be unchanged.. 
 Write one or more python scripts to do so.
  
