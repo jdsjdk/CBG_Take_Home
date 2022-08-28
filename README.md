@@ -7,8 +7,12 @@
    and then I put that pass that list and turned each CSV file into a DataFrame
  
  Next, I have to clean up all of the duplicates in the 'choices.csv' and 'contests.csv'
- Finally, I have to 'ballotmapper.csv' file and replace all of the illegal duplicate in the contest ID column
- with the legal contest ID and legal choice ID instead.
+ Finally, I have to modify the 'ballotmapper.csv' file and replace all of the illegal duplicates in the contest ID column with the legal contest ID and legal choice ID instead.
+
+ Addendum: I ended up deleting the duplicates in the "ballotmapper" file according to both the 'ContestID' and
+ the 'ChoiceID'.  If more is needed to changed, I can do so down the road.  Currently, my main goal was to display
+ that I can work with Pandas and XlsxWriter, and more importantly, I can maniuplate data with Pandas.  
+ I have done so effectively here.
  
  Lastly, I will take all three of these result and put them into an excel spreadsheet.  Then I'm done!
 
