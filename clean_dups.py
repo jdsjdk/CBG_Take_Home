@@ -5,6 +5,7 @@ Date: 8-26-2022
 '''
 
 
+
 import sys 
 import pandas as pd
 from pandas import DataFrame as pd_df
@@ -40,31 +41,51 @@ class CleanDupsCVS:
         def clean_up_data(data_list: lst[str]) -> lst[pd_df]:
             
             dfclean_list = []
-            df_list = [pd.read_csv(f) for f in data_list]
-            
-            # print(f"Before: \n {df_list[1]} \n") 
+            df_list = [pd.read_csv(f) for f in data_list] 
             
             for idx, idf in enumerate(df_list):
                 match idx:
                     case 0:
                         # Follow instructions for the 'ballotmapper.csv' file
-                        dfclean_list.append("Hello")
+                        # Keep only valid 'ContestID' and 'ChoiceID'
+                        dfclean_list.append(idf.drop_duplicates( subset=['ContestID', 'ChoiceID']))
                         
                     case 1:
                         # Follow instructions for the 'choices.csv' file
                         dfclean_list.append(idf.drop_duplicates(subset=['ContestID']))
-                        #pass
+                        
                     case 2:
                         # Follow instructions for the 'contests.csv' file
                         dfclean_list.append(idf.drop_duplicates(subset=['ContestName']))
-                        
-            # print(f"\n After: \n {dfclean_list[1]}")
             
             return dfclean_list
         
+        #Take the cleaned data, and output it to a spreadsheet
+        def df_to_excel_fout(df_list :  lst[pd_df]) -> None: 
+            
+            #Create a list of sheets
+            sheet_list = ["Ballot Mapper", "Choices", "Contests"]
+            
+            # Make the file name
+            fname = "Cleaned_Ballots.xlsx"
+            
+            #make the parent directory, and give it a file name.
+            path =fp("out/")
+            path.mkdir(parents=True, exist_ok=True)
+            fpath = path / fname
+            
+            # Create a new spreadsheet
+            write_file = pd.ExcelWriter(fpath, engine = "xlsxwriter")
+            
+            for i, dfs in enumerate(df_list):
+                dfs.to_excel(write_file, sheet_name=sheet_list[i])
+            
+            write_file.save()
+        
                 
         path_csvs = get_path_files()
-        clean_up_data(path_csvs)
+        df_cleaned = clean_up_data(path_csvs)
+        df_to_excel_fout(df_cleaned)
         
         sys.exit(0)        
 
