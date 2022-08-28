@@ -34,7 +34,7 @@ class CleanDupsCVS:
         
         '''
         Take in all of the CSV file locations
-        Put them in a DataFrame List
+        Put them in a DataFrame list
         Clean up the data in each DataFrame
         Return the new cleaned up DataFrames.
         '''
@@ -48,7 +48,7 @@ class CleanDupsCVS:
             for idx, idf in enumerate(df_list):
                 match idx:
                     case 0:
-                        # print("Testing if idx is 0")
+                        # Follow instructions for the 'ballotmapper.csv' file
                         dfclean_list.append("Hello")
                         
                     case 1:
