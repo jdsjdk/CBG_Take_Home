@@ -5,7 +5,6 @@ Date: 8-26-2022
 '''
 
 
-from cgi import print_arguments
 import sys 
 import pandas as pd
 from pandas import DataFrame as pd_df
