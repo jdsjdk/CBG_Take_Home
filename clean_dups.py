@@ -4,10 +4,12 @@ Project: This is a take home quiz for a job interview with CBG.
 Date: 8-26-2022
 '''
 
-from cgi import test
-import sys
+
+from cgi import print_arguments
+import sys 
 import pandas as pd
-from typing import List
+from pandas import DataFrame as pd_df
+from typing import List as lst
 from pathlib import Path as fp
 
 class CleanDupsCVS:
@@ -16,10 +18,10 @@ class CleanDupsCVS:
     def __init__(self) -> None:
         pass     
 
-    def main() -> None:
+    def main() -> int:
         
-         # get the in path, return the files list
-        def get_path_files() -> List[str]:
+         # get the in path, return the csv files list
+        def get_path_files() -> lst[str]:
             
             csv_list = []
             in_path = fp().cwd()  / "in/"
@@ -30,16 +32,40 @@ class CleanDupsCVS:
             
             return csv_list
         
-        #Take in all of the CSV data, and then clean it all up
-        def clean_up_data(data_list: List[str]) -> None:
-            df1 = pd.read_csv(data_list[2])
-            print(df1)  #Stopping Tests for now.  Finish up tomorrow.
-            pass
+        '''
+        Take in all of the CSV file locations
+        Put them in a DataFrame List
+        Clean up the data in each DataFrame
+        Return the new cleaned up DataFrames.
+        '''
+        def clean_up_data(data_list: lst[str]) -> lst[pd_df]:
+            
+            dfclean_list = []
+            df_list = [pd.read_csv(f) for f in data_list]
+            
+            # print(f"Before: \n {df_list[1]} \n") 
+            
+            for idx, idf in enumerate(df_list):
+                match idx:
+                    case 0:
+                        # print("Testing if idx is 0")
+                        dfclean_list.append("Hello")
+                        
+                    case 1:
+                        # Follow instructions for the 'choices.csv' file
+                        dfclean_list.append(idf.drop_duplicates(subset=['ContestID']))
+                        #pass
+                    case 2:
+                        # Follow instructions for the 'contests.csv' file
+                        dfclean_list.append(idf.drop_duplicates(subset=['ContestName']))
+                        
+            # print(f"\n After: \n {dfclean_list[1]}")
+            
+            return dfclean_list
         
                 
         path_csvs = get_path_files()
         clean_up_data(path_csvs)
-        
         
         sys.exit(0)        
 
