@@ -8,9 +8,8 @@ Date: 8-26-2022
 
 import sys 
 import pandas as pd
-from pandas import DataFrame as pd_df
-from typing import List as lst
 from pathlib import Path as fp
+from pandas import DataFrame as pd_df
 
 class CleanDupsCVS:
     
@@ -21,9 +20,9 @@ class CleanDupsCVS:
     def main() -> int:
         
          # get the in path, return the csv files list
-        def get_path_files() -> lst[str]:
+        def get_path_files() -> list[str]():
             
-            csv_list = []
+            csv_list = list[str]()
             in_path = fp().cwd()  / "in/"
             files = in_path.rglob("*.csv")
             
@@ -38,9 +37,9 @@ class CleanDupsCVS:
         Clean up the data in each DataFrame
         Return the new cleaned up DataFrames.
         '''
-        def clean_up_data(data_list: lst[str]) -> lst[pd_df]:
+        def clean_up_data(data_list: list[str]()) -> list[pd_df]():
             
-            dfclean_list = []
+            dfclean_list = list[pd_df]()
             df_list = [pd.read_csv(f) for f in data_list] 
             
             for idx, idf in enumerate(df_list):
@@ -61,7 +60,7 @@ class CleanDupsCVS:
             return dfclean_list
         
         #Take the cleaned data, and output it to a spreadsheet
-        def df_to_excel_fout(df_list :  lst[pd_df]) -> None: 
+        def df_to_excel_fout(df_list :  list[pd_df]()) -> None: 
             
             #Create a list of sheets
             sheet_list = ["Ballot Mapper", "Choices", "Contests"]
