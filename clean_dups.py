@@ -11,11 +11,7 @@ import pandas as pd
 from pathlib import Path as fp
 from pandas import DataFrame as pd_df
 
-class CleanDupsCVS:
-    
-    # generic constructor
-    def __init__(self) -> None:
-        pass     
+class CleanDupsCVS:  
 
     def main() -> int:
         
